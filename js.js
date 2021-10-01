@@ -35,13 +35,13 @@ function displayData(data, country) {
     let id_recovered = document.getElementById("recovered");
     let id_deaths = document.getElementById("deaths");
 
+    //Slicing to get latest data
+    let slice_data = data[country].slice(-1);
+
     //Getting data
     let confirmed = slice_data[0]["confirmed"];
     let recovered = slice_data[0]["recovered"];
     let deaths = slice_data[0]["deaths"];
-
-    //Slicing to get latest data
-    let slice_data = data[country].slice(-1);
 
     if (data != null) {
         //Displaying data
