@@ -4,7 +4,7 @@ var elem_deaths = document.getElementById("deaths");
 
 function GetData() {
 
-    const API_ENDPOINT = "https://pomber.github.io/covid19/timeseries.json";
+    const API_ENDPOINT = "https://pomber.github.io/covid19/tmeseries.json";
 
     fetch(API_ENDPOINT)
         .then((response) => response.json())
