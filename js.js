@@ -15,7 +15,7 @@ function GetData() {
             .then((response) => response.json())
             .then((data) => displayData(data, "Mauritius"))
             .catch((err) => errorHandler(err));
-    }, 10000);
+    }, 2000);
 
 }
 
@@ -56,4 +56,5 @@ function displayData(data, country) {
         id_deaths.innerHTML = deaths;
     }
 }
+
 GetData();
