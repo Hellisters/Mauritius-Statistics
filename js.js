@@ -8,14 +8,12 @@ function GetData() {
     elem_recovered.innerHTML = "Loading...";
     elem_deaths.innerHTML = "Loading...";
 
-    setTimeout(function bla() {
-        const API_ENDPOINT = "https://pomber.github.io/covid19/timeseries.json";
+    const API_ENDPOINT = "https://pomber.github.io/covid19/timeseries.json";
 
-        fetch(API_ENDPOINT)
-            .then((response) => response.json())
-            .then((data) => displayData(data, "Mauritius"))
-            .catch((err) => errorHandler(err));
-    }, 2000);
+    fetch(API_ENDPOINT)
+        .then((response) => response.json())
+        .then((data) => displayData(data, "Mauritius"))
+        .catch((err) => errorHandler(err));
 
 }
 
