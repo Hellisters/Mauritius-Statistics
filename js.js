@@ -4,12 +4,15 @@ var elem_deaths = document.getElementById("deaths");
 
 function GetData() {
 
-    const API_ENDPOINT = "https://pomber.github.io/covid19/tmeseries.json";
+    elem_confirmed.innerHTML = "Loading...";
+    elem_recovered.innerHTML = "Loading...";
+    elem_deaths.innerHTML = "Loading...";
+
+    const API_ENDPOINT = "https://pomber.github.io/covid19/timeseries.json";
 
     fetch(API_ENDPOINT)
         .then((response) => response.json())
-        .then((data) => data != null ? displayData(data, "Mauritius") : (elem_confirmed.innerHTML = "Loading...",
-            elem_recovered.innerHTML = "Loading...", elem_deaths.innerHTML = "Loading..."))
+        .then((data) => displayData(data, "Mauritius"))
         .catch((err) => errorHandler(err));
 }
 
@@ -32,17 +35,23 @@ function displayData(data, country) {
     let id_recovered = document.getElementById("recovered");
     let id_deaths = document.getElementById("deaths");
 
-    //Slicing to get latest data
-    let slice_data = data[country].slice(-1);
-
     //Getting data
     let confirmed = slice_data[0]["confirmed"];
     let recovered = slice_data[0]["recovered"];
     let deaths = slice_data[0]["deaths"];
 
-    //Displaying data
-    id_confirm.innerHTML = confirmed;
-    id_recovered.innerHTML = recovered;
-    id_deaths.innerHTML = deaths;
+    //Slicing to get latest data
+    let slice_data = data[country].slice(-1);
+
+    if (data != null) {
+        //Displaying data
+        id_confirm.innerHTML = confirmed;
+        id_recovered.innerHTML = recovered;
+        id_deaths.innerHTML = deaths;
+    } else {
+        elem_confirmed.innerHTML = "No result!";
+        elem_recovered.innerHTML = "No result!";
+        elem_deaths.innerHTML = "No result!";
+    }
 }
 GetData();
