@@ -8,7 +8,7 @@ function GetData() {
     elem_recovered.innerHTML = "Loading...";
     elem_deaths.innerHTML = "Loading...";
 
-    const API_ENDPOINT = "https://pomber.github.io/covid19/timseries.json";
+    const API_ENDPOINT = "https://pomber.github.io/covid19/timeseries.json";
 
     fetch(API_ENDPOINT)
         .then((response) => response.json())
