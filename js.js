@@ -22,6 +22,9 @@ function processData(data) {
 
 function errorHandler(err) {
     console.log('%c' + err, 'background: #222; color: #bada55');
+    elem_confirmed.innerHTML = "No result!";
+    elem_recovered.innerHTML = "No result!";
+    elem_deaths.innerHTML = "No result!";
 }
 
 function extractData(data, country, checkType) {
@@ -48,10 +51,6 @@ function displayData(data, country) {
         id_confirm.innerHTML = confirmed;
         id_recovered.innerHTML = recovered;
         id_deaths.innerHTML = deaths;
-    } else {
-        elem_confirmed.innerHTML = "No result!";
-        elem_recovered.innerHTML = "No result!";
-        elem_deaths.innerHTML = "No result!";
     }
 }
 GetData();
