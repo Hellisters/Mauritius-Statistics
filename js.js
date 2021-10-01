@@ -1,10 +1,15 @@
+var elem_confirmed = document.getElementById("confirmed");
+var elem_recovered = document.getElementById("recovered");
+var elem_deaths = document.getElementById("deaths");
+
 function GetData() {
 
     const API_ENDPOINT = "https://pomber.github.io/covid19/timeseries.json";
 
     fetch(API_ENDPOINT)
         .then((response) => response.json())
-        .then((data) => displayData(data, "Mauritius"))
+        .then((data) => data != null ? displayData(data, "Mauritius") : (elem_confirmed.innerHTML = "Loading...",
+            elem_recovered.innerHTML = "Loading...", elem_deaths.innerHTML = "Loading..."))
         .catch((err) => errorHandler(err));
 }
 
@@ -40,5 +45,4 @@ function displayData(data, country) {
     id_recovered.innerHTML = recovered;
     id_deaths.innerHTML = deaths;
 }
-
 GetData();
